@@ -1,0 +1,132 @@
+:root {
+    --clr-dark: rgb(43, 41, 41);
+    --clr-light: #393E46;
+    --clr-light: #EEEEEE;
+    --clr-orange: #FD7014;
+
+
+
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.main-nav {
+    padding: 0.7rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: #1c1612 solid 1px;
+}
+
+.main-nav__logo-text {
+    color: #139EED;
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+
+.main-nav__link {
+    color: var(--clr-dark);
+    font-weight: 500;
+    text-decoration: inherit;
+}
+
+
+.main-nav__right-side {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.main-nav__link:hover {
+    color: #a4a4a6;
+}
+
+.burger-icon {
+    cursor: pointer;
+    min-width: 30px;
+
+    transition: transform .4s;
+}
+
+.burger-icon.clicked {
+    transform: rotate(90deg);
+
+}
+
+
+.sidebar-container {
+    background-color: #fd711464;
+    height: 92vh;
+    position: absolute;
+    width: 300px;
+    right: -300px;
+    transition: right .7s;
+}
+
+.sidebar-container.open-sideBar {
+    right: 2px;
+}
+
+.sidebar-btns-container {
+    display: flex;
+    width: 100%;
+    padding: .2rem;
+    justify-content: center;
+    border: none;
+}
+
+.sidebar_btn {
+    width: 100px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.sidebar_btn.active {
+    background-color: #fff;
+    color: #1c1612;
+}
+
+
+
+.main-content {
+    max-width: 100%;
+
+
+}
+
+.color-input {
+    border-radius: .3rem;
+}
+
+.get-schema-btn,
+.mode-selector,
+.save-btn {
+    padding: .3rem 1rem;
+    border-radius: .3rem;
+}
+
+
+.mode-selector {
+    background-color: #EFF25E;
+}
+
+.get-schema-btn {
+    background-color: #6ECE5E;
+}
+
+.save-btn {
+    background-color: #393e461d;
+}
+
+
+.btns-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 0;
+}

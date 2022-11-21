@@ -1,0 +1,47 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+
+
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+
+  --clr-dark: rgb(43, 41, 41);
+  --clr-light: #393E46;
+  --clr-light: #EEEEEE;
+  --clr-orange: #FD7014;
+
+
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-image: url('./assets/dot-grid.webp');
+  color: var(--clr-dark)
+}
+
+
+a {
+  text-decoration: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
