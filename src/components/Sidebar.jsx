@@ -2,8 +2,8 @@ import useToggle from "../hooks/useToggle";
 
 import "../css/home.css";
 
-export default function Sidebar({ isOpen }) {
-  const activeClass = isOpen ? "open-sideBar" : null;
+export default function Sidebar({ isOpen, savedScheams }) {
+  const activeClass = isOpen ? "open" : null;
   const [toggleState, toggle] = useToggle(false);
 
   return (
@@ -24,7 +24,13 @@ export default function Sidebar({ isOpen }) {
       </div>
 
       {toggleState ? (
-        <div className="saved-palettes">palettes</div>
+        <div className="saved-palettes">
+          {savedScheams.map((item) => {
+            console.log(savedScheams);
+            return <h1>{item[0].hex.value}</h1>;
+          })}
+          palettes
+        </div>
       ) : (
         <div className="saved-icons">icons</div>
       )}
