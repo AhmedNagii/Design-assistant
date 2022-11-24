@@ -1,8 +1,11 @@
 import "../css/home.css";
 
-export default function () {
+export default function ({ onSelect }) {
   return (
-    <select className="mode-selector">
+    <select
+      onChange={(e) => onSelect(e.target.value)}
+      className="mode-selector"
+    >
       <option value="none">Select Mode...</option>
       <option value="monochrome">Monochrome </option>
       <option value="monochrome-dark">Monochrome-dark</option>
