@@ -1,5 +1,5 @@
 import { useState, forwardRef, useImperativeHandle } from "react";
-import "../css/Snackbar.css";
+import "../css/snackbar.css";
 
 const Snackbar = forwardRef((props, ref) => {
   const [showSnackbar, setShowSnackbar] = useState(false);
@@ -9,7 +9,7 @@ const Snackbar = forwardRef((props, ref) => {
       setShowSnackbar(true);
       setTimeout(() => {
         setShowSnackbar(false);
-      }, 2000);
+      }, 3000);
     },
   }));
   return (

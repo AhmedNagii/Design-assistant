@@ -9,11 +9,8 @@ import ColorItem from "../components/ColorItem";
 import useLocalSroarge from "../hooks/useLocalStorage";
 import Snackbar from "../components/Snackbar";
 
-let savedScheamsArr = [];
-
 export default function HomePage() {
   const [value, setValue] = useLocalSroarge([], "saved-schemas");
-  let savedScheamsArr = value;
   const [toggleState, toggle] = useToggle(false);
   const [inputValues, setInputValues] = useState({
     colorVal: "#ffffff",
@@ -26,18 +23,18 @@ export default function HomePage() {
     fetchSchema,
     { enabled: false }
   );
+  const colors = data?.colors ?? [];
+
   const saveScheam = (e) => {
     e.preventDefault();
     const schema = {
       id: Date.now(),
       schemaDetails: colors,
     };
-    savedScheamsArr.push(schema);
-    console.log(savedScheamsArr);
-    setValue(savedScheamsArr);
+
+    setValue((prevValue) => [...prevValue, schema]);
     snackbarRef.current.show();
   };
-  const colors = data?.colors ?? [];
 
   return (
     <div>
@@ -74,7 +71,6 @@ export default function HomePage() {
           />
           <button
             className="get-schema-btn"
-            type="submit"
             onClick={(e) => {
               e.preventDefault();
               refetch();
