@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useToggle from "../hooks/useToggle";
 import Navbar from "../components/Navbar";
@@ -7,23 +7,36 @@ import SelectModeBtn from "../components/SelectModeBtn";
 import fetchSchema from "../api/fetchSchema";
 import ColorItem from "../components/ColorItem";
 import useLocalSroarge from "../hooks/useLocalStorage";
+import Snackbar from "../components/Snackbar";
 
 let savedScheamsArr = [];
 
 export default function HomePage() {
   const [value, setValue] = useLocalSroarge([], "saved-schemas");
+  let savedScheamsArr = value;
   const [toggleState, toggle] = useToggle(false);
   const [inputValues, setInputValues] = useState({
     colorVal: "#ffffff",
     selectedMode: "",
   });
+  const snackbarRef = useRef(null);
 
   const { isFetching, data, refetch } = useQuery(
     ["", inputValues.colorVal.slice(1), inputValues.selectedMode],
     fetchSchema,
     { enabled: false }
   );
-
+  const saveScheam = (e) => {
+    e.preventDefault();
+    const schema = {
+      id: Date.now(),
+      schemaDetails: colors,
+    };
+    savedScheamsArr.push(schema);
+    console.log(savedScheamsArr);
+    setValue(savedScheamsArr);
+    snackbarRef.current.show();
+  };
   const colors = data?.colors ?? [];
 
   return (
@@ -44,11 +57,7 @@ export default function HomePage() {
               value={inputValues.colorVal}
             />
             <button
-              onClick={(e) => {
-                e.preventDefault();
-                savedScheamsArr.push(colors);
-                setValue((prevVal) => [...prevVal, ...savedScheamsArr]);
-              }}
+              onClick={(e) => saveScheam(e)}
               className="save-btn"
               disabled={colors.length == 0}
             >
@@ -102,6 +111,7 @@ export default function HomePage() {
           )}
         </div>
       </main>
+      <Snackbar ref={snackbarRef} message="Palette has been saved!" type="" />
     </div>
   );
 }

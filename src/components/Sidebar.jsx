@@ -24,16 +24,30 @@ export default function Sidebar({ isOpen, savedScheams }) {
       </div>
 
       {toggleState ? (
-        <div className="saved-palettes">
+        <>
           {savedScheams.map((item) => {
-            console.log(savedScheams);
-            return <h1>{item[0].hex.value}</h1>;
+            const { id, schemaDetails } = item;
+            return (
+              <div className="saved-palettes">
+                <div key={id} className="saved-palette__schema">
+                  {schemaDetails.map((color, index) => (
+                    <Color key={color.hex.value} hex={color.hex.value} />
+                  ))}
+                </div>
+                <button className="saved-palettes__btn">Delete</button>
+                <button className="saved-palettes__btn">Open</button>
+              </div>
+            );
           })}
-          palettes
-        </div>
+        </>
       ) : (
         <div className="saved-icons">icons</div>
       )}
     </div>
   );
+}
+
+function Color({ hex }) {
+  const style = { backgroundColor: `${hex}` };
+  return <div style={style} className="small-color-item"></div>;
 }
