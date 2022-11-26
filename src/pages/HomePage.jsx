@@ -1,17 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import useToggle from "../hooks/useToggle";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import SelectModeBtn from "../components/SelectModeBtn";
 import fetchSchema from "../api/fetchSchema";
 import ColorItem from "../components/ColorItem";
-import useLocalSroarge from "../hooks/useLocalStorage";
 import Snackbar from "../components/Snackbar";
+import SavedPalettesContext from "../context/SavedPalettesContext";
 
 export default function HomePage() {
-  const [value, setValue] = useLocalSroarge([], "saved-schemas");
-  const [toggleState, toggle] = useToggle(false);
+  const { savePalette } = useContext(SavedPalettesContext);
   const [inputValues, setInputValues] = useState({
     colorVal: "#ffffff",
     selectedMode: "",
@@ -27,19 +23,12 @@ export default function HomePage() {
 
   const saveScheam = (e) => {
     e.preventDefault();
-    const schema = {
-      id: Date.now(),
-      schemaDetails: colors,
-    };
-
-    setValue((prevValue) => [...prevValue, schema]);
+    savePalette(colors);
     snackbarRef.current.show();
   };
 
   return (
     <div>
-      <Navbar handelClick={toggle} isOpen={toggleState} />
-      <Sidebar isOpen={toggleState} savedScheams={value} />
       <main className="main-content">
         <form className="form">
           <span className="flex">
@@ -90,7 +79,7 @@ export default function HomePage() {
               <span className="hint-text">
                 Select color and mode to get your color schema
               </span>
-              🌈
+              🎨
             </h1>
           ) : (
             colors.map((color, index) => {
@@ -107,7 +96,7 @@ export default function HomePage() {
           )}
         </div>
       </main>
-      <Snackbar ref={snackbarRef} message="Palette has been saved!" type="" />
+      <Snackbar ref={snackbarRef} message="Palette has been saved!" />
     </div>
   );
 }

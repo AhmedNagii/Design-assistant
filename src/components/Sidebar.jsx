@@ -1,10 +1,14 @@
 import useToggle from "../hooks/useToggle";
+import SavedPalettesContext from "../context/SavedPalettesContext";
+import { useContext } from "react";
 
 import "../css/home.css";
 
-export default function Sidebar({ isOpen, savedScheams }) {
+export default function Sidebar({ isOpen }) {
   const activeClass = isOpen ? "open" : null;
   const [toggleState, toggle] = useToggle(false);
+  const { savedPalettes, deletePalette, openPalette } =
+    useContext(SavedPalettesContext);
 
   return (
     <div className={`${activeClass} sidebar-container`}>
@@ -25,17 +29,28 @@ export default function Sidebar({ isOpen, savedScheams }) {
 
       {toggleState ? (
         <>
-          {savedScheams.map((item) => {
+          {savedPalettes.map((item) => {
             const { id, schemaDetails } = item;
             return (
-              <div className="saved-palettes">
-                <div key={id} className="saved-palette__schema">
+              <div key={id} className="saved-palettes">
+                <div className="saved-palette__schema">
                   {schemaDetails.map((color, index) => (
-                    <Color key={color.hex.value} hex={color.hex.value} />
+                    <Color key={index} hex={color.hex.value} />
                   ))}
                 </div>
-                <button className="saved-palettes__btn">Delete</button>
-                <button className="saved-palettes__btn">Open</button>
+                <button
+                  onClick={(e) => deletePalette(e)}
+                  className="saved-palettes__btn"
+                  id={id}
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={(e) => openPalette(e)}
+                  className="saved-palettes__btn"
+                >
+                  Open
+                </button>
               </div>
             );
           })}
