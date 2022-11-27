@@ -1,14 +1,14 @@
-import useToggle from "../hooks/useToggle";
 import SavedPalettesContext from "../context/SavedPalettesContext";
+import useToggle from "../hooks/useToggle";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import "../css/home.css";
 
 export default function Sidebar({ isOpen }) {
   const activeClass = isOpen ? "open" : null;
   const [toggleState, toggle] = useToggle(false);
-  const { savedPalettes, deletePalette, openPalette } =
-    useContext(SavedPalettesContext);
+  const { savedPalettes, deletePalette } = useContext(SavedPalettesContext);
 
   return (
     <div className={`${activeClass} sidebar-container`}>
@@ -40,17 +40,18 @@ export default function Sidebar({ isOpen }) {
                 </div>
                 <button
                   onClick={(e) => deletePalette(e)}
-                  className="saved-palettes__btn"
+                  className="delete-palette__btn"
                   id={id}
                 >
                   Delete
                 </button>
-                <button
-                  onClick={(e) => openPalette(e)}
-                  className="saved-palettes__btn"
+                <Link
+                  to={`/details/${item.id}`}
+                  target="_blank"
+                  className="open-palette__btn"
                 >
                   Open
-                </button>
+                </Link>
               </div>
             );
           })}

@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import IconsPage from "./pages/IconsPage";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Details from "./pages/Details";
 import { SavedPalettesProvider } from "./context/SavedPalettesContext";
 import "./css/App.css";
 
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/searchicons" element={<IconsPage />} />
+              <Route path="/details/:id" element={<Details />} />
             </Routes>
           </BrowserRouter>
         </SavedPalettesProvider>

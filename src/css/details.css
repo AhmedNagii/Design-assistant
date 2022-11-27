@@ -1,0 +1,29 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+    padding-top: 1rem;
+}
+
+.details-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 98%;
+    height: 100%;
+    padding-top: 1rem;
+
+}
+
+
+
+@media (max-width:750px) {
+    .details-page {
+        flex-direction: column;
+        height: 100%;
+    }
+
+
+}

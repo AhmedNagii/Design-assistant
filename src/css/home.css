@@ -16,11 +16,12 @@ body {
 /* main nav bar */
 
 .main-nav {
-    padding: 0.7rem 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 8%;
     border-bottom: #1c1612 solid 1px;
+    padding: 0 0.5em;
 }
 
 .main-nav__logo-text {
@@ -64,7 +65,7 @@ body {
 
 .sidebar-container {
     background-color: #030303f3;
-    height: 92vh;
+    height: 92.7%;
     position: absolute;
     width: 300px;
     right: -300px;
@@ -82,7 +83,7 @@ body {
 .sidebar-btns-container {
     display: flex;
     width: 100%;
-    padding: .2rem;
+    padding: .2rem 0;
     justify-content: center;
     border: none;
 }
@@ -112,7 +113,7 @@ body {
     margin-top: 1rem;
 }
 
-.saved-palettes__btn {
+.savecolors-palettes__btn {
     border: none;
     padding: 3px 5px;
     margin: 1px;
@@ -120,21 +121,42 @@ body {
     color: #000;
     font-weight: 700;
     border-radius: 0 0px 5px 5px;
+    font-size: 1rem;
+}
+
+
+
+.delete-palette__btn,
+.open-palette__btn {
+    background-color: #fff;
+    font-size: 1rem;
+    border: none;
+    margin: 0 0.3rem 0 0;
+    padding: 3px;
+    border-radius: 0 0 6px 6px;
+    color: #000;
 
 }
 
-.small-color-item {
+.delete-palette__btn {
+    font-weight: 700;
+    color: rgb(191, 0, 0);
+}
 
+
+.small-color-item {
     width: 20%;
     padding: 1rem;
-
 }
 
 /* Home page main content  */
 .main-content {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+
 }
 
 .color-input {
@@ -202,10 +224,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 79.3vh;
-
+    gap: 0.5rem;
+    width: 98%;
+    height: 90%;
 }
+
+.color-item {
+    width: 20%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.color-info-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+
 
 .hint-text {
     padding: 1rem;
@@ -224,28 +262,10 @@ body {
     min-width: 380px;
 }
 
-.color-item {
-    width: 20%;
-    height: 90%;
-    margin: .3rem;
-    border-radius: 1rem;
-}
-
-.color-info-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center
-}
-
 @media (max-width:750px) {
     .colors-container {
-
         flex-direction: column;
         height: 100%;
-
-
     }
 
     .color-item {

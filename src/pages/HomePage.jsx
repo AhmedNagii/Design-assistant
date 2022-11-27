@@ -28,75 +28,73 @@ export default function HomePage() {
   };
 
   return (
-    <div>
-      <main className="main-content">
-        <form className="form">
-          <span className="flex">
-            <input
-              className="color-input"
-              type="color"
-              onChange={(e) => {
-                setInputValues((prevState) => {
-                  return { ...prevState, colorVal: e.target.value };
-                });
-              }}
-              value={inputValues.colorVal}
-            />
-            <button
-              onClick={(e) => saveScheam(e)}
-              className="save-btn"
-              disabled={colors.length == 0}
-            >
-              Save 💘
-            </button>
-          </span>
-          <SelectModeBtn
-            onSelect={(value) => {
-              value &&
-                setInputValues((prevState) => {
-                  return { ...prevState, selectedMode: value };
-                });
+    <main className="main-content">
+      <form className="form">
+        <span className="flex">
+          <input
+            className="color-input"
+            type="color"
+            onChange={(e) => {
+              setInputValues((prevState) => {
+                return { ...prevState, colorVal: e.target.value };
+              });
             }}
+            value={inputValues.colorVal}
           />
           <button
-            className="get-schema-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              refetch();
-            }}
+            onClick={(e) => saveScheam(e)}
+            className="save-btn"
+            disabled={colors.length == 0}
           >
-            Get Schema
+            Save 💘
           </button>
-        </form>
+        </span>
+        <SelectModeBtn
+          onSelect={(value) => {
+            value &&
+              setInputValues((prevState) => {
+                return { ...prevState, selectedMode: value };
+              });
+          }}
+        />
+        <button
+          className="get-schema-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            refetch();
+          }}
+        >
+          Get Schema
+        </button>
+      </form>
 
-        <div className="colors-container">
-          {isFetching ? (
-            <div className="loading-pane">
-              <h2 className="loader">🌀</h2>
-            </div>
-          ) : colors.length == 0 ? (
-            <h1 className="gradient-text">
-              <span className="hint-text">
-                Select color and mode to get your color schema
-              </span>
-              🎨
-            </h1>
-          ) : (
-            colors.map((color, index) => {
-              return (
-                <ColorItem
-                  key={index}
-                  hex={color.hex.value}
-                  name={color.name.value}
-                  rgb={color.rgb.value}
-                  contrast={color.contrast.value}
-                />
-              );
-            })
-          )}
-        </div>
-      </main>
+      <div className="colors-container">
+        {isFetching ? (
+          <div className="loading-pane">
+            <h2 className="loader">🌀</h2>
+          </div>
+        ) : colors.length == 0 ? (
+          <h1 className="gradient-text">
+            <span className="hint-text">
+              Select color and mode to get your color schema
+            </span>
+            🎨
+          </h1>
+        ) : (
+          colors.map((color, index) => {
+            return (
+              <ColorItem
+                key={index}
+                hex={color.hex.value}
+                name={color.name.value}
+                rgb={color.rgb.value}
+                contrast={color.contrast.value}
+              />
+            );
+          })
+        )}
+      </div>
       <Snackbar ref={snackbarRef} message="Palette has been saved!" />
-    </div>
+    </main>
   );
 }
