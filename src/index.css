@@ -4,27 +4,16 @@
   line-height: 24px;
   font-weight: 400;
 
-
-
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
-
-  --clr-dark: rgb(43, 41, 41);
-  --clr-light: #393E46;
-  --clr-light: #EEEEEE;
-  --clr-orange: #FD7014;
-
-
 }
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   min-width: 320px;

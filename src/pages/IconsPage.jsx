@@ -1,14 +1,19 @@
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import useToggle from "../hooks/useToggle";
-export default function IconsPage() {
-  const [toggleState, toggle] = useToggle(false);
+import "../css/searchIcons.css";
+import searchIcon from "../assets/search-icon1.png";
 
+export default function IconsPage() {
   return (
-    <>
-      <Navbar handelClick={toggle} isOpen={toggleState} />
-      <Sidebar isOpen={toggleState} />
-      <h1 className="text">Serach Icons</h1>
-    </>
+    <div className="search-icons-page">
+      <div className="serach-input-container">
+        <img className="search-icon" src={searchIcon} alt="search icon" />
+        <input
+          className="search-input"
+          placeholder="Search for Icons..."
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
+        />
+      </div>
+    </div>
   );
 }
