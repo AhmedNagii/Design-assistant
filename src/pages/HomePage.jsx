@@ -20,7 +20,7 @@ export default function HomePage() {
 
   const snackbarRef = useRef(null);
 
-  const results = useQuery(["", inputValues], fetchSchema);
+  const results = useQuery(["", inputValues], fetchSchema, { retry: 1 });
   const colors = results.data?.colors ?? [];
 
   const saveScheam = (e) => {
@@ -72,9 +72,9 @@ export default function HomePage() {
         ) : colors.length == 0 ? (
           <h1 className="gradient-text">
             <span className="hint-text">
-              Select color and mode to get your color schema
+              Please check your internet connection
             </span>
-            🎨
+            📡
           </h1>
         ) : (
           colors.map((color, index) => {

@@ -19,9 +19,14 @@ export default function Navbar({ handelClick, isOpen }) {
           Home
         </Link>
 
-        <span onClick={handelClick} className={`burger-icon ${isIconClicked}`}>
-          <img src={hamburgerIcon} alt="sidbar-icon" />
-        </span>
+        <div className={`burger-icon ${isIconClicked}`}>
+          <img
+            aria-hidden="true"
+            onClick={handelClick}
+            src={hamburgerIcon}
+            alt="sidbar-icon"
+          />
+        </div>
       </div>
     </nav>
   );

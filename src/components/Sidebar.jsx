@@ -4,7 +4,7 @@ import useToggle from "../hooks/useToggle";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import "../css/sidebar.css";
+import "../css/navbar.css";
 
 export default function Sidebar({ isOpen }) {
   const activeClass = isOpen ? "open" : null;
@@ -65,7 +65,7 @@ export default function Sidebar({ isOpen }) {
             const { id, links } = img;
             return (
               <div key={id} className="saved-image-item">
-                <img className="saved-image" src={links.image} />
+                <img className="saved-image" src={links.image} alt="" />
 
                 <button
                   onClick={(e) => deleteImage(e)}

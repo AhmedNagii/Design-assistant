@@ -26,6 +26,7 @@ export default function ImageItem({
       <img className="image" src={smallImg} alt={alt} />
       {isHoverd && (
         <i
+          role="presentation"
           className={`${favClass} favorite`}
           onClick={() => {
             addToFav(id, downloadLink, smallImg, toggleFav);
@@ -36,6 +37,7 @@ export default function ImageItem({
 
       {isHoverd && (
         <i
+          role="presentation"
           className="ri-download-2-line download"
           onClick={() => openImage(downloadLink)}
         ></i>

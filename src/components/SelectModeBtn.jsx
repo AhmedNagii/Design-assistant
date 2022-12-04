@@ -1,6 +1,6 @@
 import "../css/home.css";
 
-export default function ({ onSelect }) {
+const SelectModeBtn = ({ onSelect }) => {
   return (
     <select
       onChange={(e) => onSelect(e.target.value)}
@@ -17,4 +17,6 @@ export default function ({ onSelect }) {
       <option value="quad">Quad</option>
     </select>
   );
-}
+};
+
+export default SelectModeBtn;

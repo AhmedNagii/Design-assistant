@@ -1,13 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { SavedPalettesProvider } from "./context/SavedPalettesContext";
+import { ImagesContextProvider } from "./context/ImagesContext";
 import useToggle from "./hooks/useToggle";
 import HomePage from "./pages/HomePage";
 import SearchImages from "./pages/SearchImages";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Details from "./pages/paletteDetails";
-import { SavedPalettesProvider } from "./context/SavedPalettesContext";
-import { ImagesContextProvider } from "./context/ImagesContext";
 import "./css/App.css";
 
 const queryClinet = new QueryClient({

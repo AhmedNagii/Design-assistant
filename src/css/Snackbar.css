@@ -1,7 +1,7 @@
 .snackbar {
     position: fixed;
     left: 50%;
-    top: 5%;
+    top: 10%;
     transform: translate(-50%, -50%);
     width: 350px;
     height: 60px;
@@ -10,6 +10,7 @@
     align-items: center;
     text-align: center;
     background-color: rgb(57, 217, 164);
+    z-index: 999;
 }
 
 .snackbar .symbol {

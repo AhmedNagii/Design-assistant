@@ -7,12 +7,13 @@ import getClass from "../getClass";
 
 import "../css/searchImages.css";
 
-export default function IconsPage() {
+export default function SearchImages() {
   const [term, setTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const { isLoading, data } = useQuery(
     ["search", term, currentPage],
-    fetchImages
+    fetchImages,
+    { retry: 1 }
   );
   let searchQuery = "";
   const images = data?.results ?? [];
@@ -38,18 +39,17 @@ export default function IconsPage() {
           Search
         </button>
       </div>
-
       <section className="search-results">
-        {console.log(data)}
         {isLoading ? (
           <div className="loading-pane">
             <h2 className="loader">🌀</h2>
           </div>
         ) : images.length == 0 ? (
-          <h1 className="gradient-text hint-text">
-            <span className="">
-              Please check your spelling or the internet connection
+          <h1 className="gradient-text">
+            <span className="hint-text">
+              Please check your input or the internet connection
             </span>
+            📡
           </h1>
         ) : (
           images.map((img, index) => {
