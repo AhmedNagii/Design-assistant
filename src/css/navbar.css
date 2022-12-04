@@ -1,0 +1,136 @@
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: #1c1612 solid 1px;
+    padding: 0 0.5em;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+    background-color: rgb(169, 214, 234);
+}
+
+.main-nav__logo-text {
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+
+.main-nav__link {
+    color: var(--clr-dark);
+    font-weight: 500;
+
+}
+
+
+.main-nav__right-side {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.main-nav__link:hover {
+    color: #a4a4a6;
+}
+
+.burger-icon {
+    cursor: pointer;
+    min-width: 30px;
+
+    transition: transform .4s;
+}
+
+.burger-icon.clicked {
+    transform: rotate(90deg);
+
+}
+
+/* Side bar content */
+
+.sidebar-container {
+    background-color: #030303f3;
+    height: 95%;
+    position: fixed;
+    width: 300px;
+    right: -300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 999;
+    top: 60px;
+    transition: right .7s;
+}
+
+.sidebar-container.open {
+    right: 0;
+}
+
+.sidebar-btns-container {
+    display: flex;
+    width: 100%;
+    padding: .2rem 0;
+    justify-content: center;
+    border: none;
+}
+
+.sidebar_btn {
+    width: 100px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.sidebar_btn.active {
+    color: #1c1612;
+    background-color: #139EED;
+}
+
+
+
+.saved-items-container {
+    width: 90%;
+}
+
+
+.saved-palette__schema {
+    display: flex;
+    height: 30px;
+    margin-top: 1rem;
+}
+
+
+.delete-item__btn,
+.open-item__btn {
+    background-color: #fff;
+    border: none;
+    font-size: 1rem;
+    margin-right: 5px;
+    padding: 3px;
+    border-radius: 0 0 6px 6px;
+    font-weight: 700;
+    color: #000;
+    cursor: pointer;
+}
+
+.delete-item__btn {
+    color: rgb(191, 0, 0);
+}
+
+
+.small-color-item {
+    width: 20%;
+    padding: 1rem;
+}
+
+
+.saved-image {
+    object-fit: cover;
+    display: flex;
+    height: 100px;
+    margin-top: 1rem;
+}

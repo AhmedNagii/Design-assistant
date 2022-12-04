@@ -1,14 +1,17 @@
 import SavedPalettesContext from "../context/SavedPalettesContext";
+import ImagesContext from "../context/ImagesContext";
 import useToggle from "../hooks/useToggle";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import "../css/home.css";
+import "../css/sidebar.css";
 
 export default function Sidebar({ isOpen }) {
   const activeClass = isOpen ? "open" : null;
   const [toggleState, toggle] = useToggle(false);
   const { savedPalettes, deletePalette } = useContext(SavedPalettesContext);
+
+  const { savedImages, deleteImage } = useContext(ImagesContext);
 
   return (
     <div className={`${activeClass} sidebar-container`}>
@@ -23,12 +26,12 @@ export default function Sidebar({ isOpen }) {
           onClick={toggle}
           className={`sidebar_btn ${!toggleState && "active"}`}
         >
-          Icons
+          Images
         </button>
       </div>
 
       {toggleState ? (
-        <>
+        <div className="saved-items-container">
           {savedPalettes.map((item) => {
             const { id, schemaDetails } = item;
             return (
@@ -40,24 +43,53 @@ export default function Sidebar({ isOpen }) {
                 </div>
                 <button
                   onClick={(e) => deletePalette(e)}
-                  className="delete-palette__btn"
+                  className="delete-item__btn"
                   id={id}
                 >
                   Delete
                 </button>
                 <Link
-                  to={`/details/${item.id}`}
+                  to={`/paletteDetails/${item.id}`}
                   target="_blank"
-                  className="open-palette__btn"
+                  className="open-item__btn"
                 >
                   Open
                 </Link>
               </div>
             );
           })}
-        </>
+        </div>
       ) : (
-        <div className="saved-icons">icons</div>
+        <div className="saved-items-container">
+          {savedImages.map((img) => {
+            const { id, links } = img;
+            return (
+              <div key={id} className="saved-image-item">
+                <img className="saved-image" src={links.image} />
+
+                <button
+                  onClick={(e) => deleteImage(e)}
+                  className="delete-item__btn"
+                  id={id}
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() =>
+                    window.open(
+                      img.links.download,
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                  className="open-item__btn"
+                >
+                  Open
+                </button>
+              </div>
+            );
+          })}
+        </div>
       )}
     </div>
   );

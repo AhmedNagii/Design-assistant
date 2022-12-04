@@ -6,7 +6,7 @@ export default function ({ onSelect }) {
       onChange={(e) => onSelect(e.target.value)}
       className="mode-selector"
     >
-      <option value="none">Select Mode...</option>
+      <option value="">Select Mode...</option>
       <option value="monochrome">Monochrome </option>
       <option value="monochrome-dark">Monochrome-dark</option>
       <option value="monochrome-light">Monochrome-light</option>

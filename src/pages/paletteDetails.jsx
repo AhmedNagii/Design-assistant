@@ -5,7 +5,7 @@ import { useContext } from "react";
 import SavedPalettesContext from "../context/SavedPalettesContext";
 
 export default function Details() {
-  const { savedPalettes, _ } = useContext(SavedPalettesContext);
+  const { savedPalettes } = useContext(SavedPalettesContext);
   const { id } = useParams();
   const opendItem = savedPalettes.filter((schema) => {
     console.log(schema.id, id);

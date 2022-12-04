@@ -11,8 +11,8 @@ export default function Navbar({ handelClick, isOpen }) {
         Design Assistant
       </Link>
       <div className="main-nav__right-side">
-        <Link to={"/searchicons"} className="main-nav__link">
-          Search Icons
+        <Link to={"/searchImages"} className="main-nav__link">
+          Search Images
         </Link>
 
         <Link to={"/"} className="main-nav__link">

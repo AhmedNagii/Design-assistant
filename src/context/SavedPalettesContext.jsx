@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import useLocalSroarge from "../hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const SavedPalettesContext = createContext();
 
 export function SavedPalettesProvider({ children }) {
-  const [value, setValue] = useLocalSroarge([], "saved-palettes");
+  const [value, setValue] = useLocalStorage([], "saved-palettes");
 
   const savePalette = (colors) => {
     const schema = {

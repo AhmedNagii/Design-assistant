@@ -6,20 +6,22 @@ import ColorItem from "../components/ColorItem";
 import Snackbar from "../components/Snackbar";
 import SavedPalettesContext from "../context/SavedPalettesContext";
 
+let currentInput = {
+  colorVal: "#ffffff",
+  selectedMode: "",
+};
+
 export default function HomePage() {
   const { savePalette } = useContext(SavedPalettesContext);
   const [inputValues, setInputValues] = useState({
     colorVal: "#ffffff",
     selectedMode: "",
   });
+
   const snackbarRef = useRef(null);
 
-  const { isFetching, data, refetch } = useQuery(
-    ["", inputValues.colorVal.slice(1), inputValues.selectedMode],
-    fetchSchema,
-    { enabled: false }
-  );
-  const colors = data?.colors ?? [];
+  const results = useQuery(["", inputValues], fetchSchema);
+  const colors = results.data?.colors ?? [];
 
   const saveScheam = (e) => {
     e.preventDefault();
@@ -34,11 +36,7 @@ export default function HomePage() {
           <input
             className="color-input"
             type="color"
-            onChange={(e) => {
-              setInputValues((prevState) => {
-                return { ...prevState, colorVal: e.target.value };
-              });
-            }}
+            onChange={(e) => (currentInput.colorVal = e.target.value)}
             value={inputValues.colorVal}
           />
           <button
@@ -50,18 +48,16 @@ export default function HomePage() {
           </button>
         </span>
         <SelectModeBtn
-          onSelect={(value) => {
-            value &&
-              setInputValues((prevState) => {
-                return { ...prevState, selectedMode: value };
-              });
-          }}
+          onSelect={(value) => (currentInput.selectedMode = value)}
         />
         <button
           className="get-schema-btn"
           onClick={(e) => {
             e.preventDefault();
-            refetch();
+            setInputValues({
+              selectedMode: currentInput.selectedMode,
+              colorVal: currentInput.colorVal,
+            });
           }}
         >
           Get Schema
@@ -69,7 +65,7 @@ export default function HomePage() {
       </form>
 
       <div className="colors-container">
-        {isFetching ? (
+        {results.isFetching ? (
           <div className="loading-pane">
             <h2 className="loader">🌀</h2>
           </div>
