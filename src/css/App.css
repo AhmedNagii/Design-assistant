@@ -7,3 +7,15 @@
   height: 90%;
 
 }
+
+.main {
+  background-color: rgb(53, 65, 65);
+  height: 100%;
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.details-page {
+
+  height: 100%;
+}
