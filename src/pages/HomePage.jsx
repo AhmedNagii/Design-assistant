@@ -63,7 +63,6 @@ export default function HomePage() {
           Get Schema
         </button>
       </form>
-
       <div className="colors-container">
         {results.isFetching ? (
           <div className="loading-pane">

@@ -1,11 +1,7 @@
 :root {
-    --clr-dark: rgb(43, 41, 41);
-    --clr-light: #393E46;
-    --clr-light: #EEEEEE;
-    --clr-orange: #FD7014;
+
 
     height: 100%;
-
 }
 
 body {
@@ -67,9 +63,6 @@ body {
 }
 
 @media(max-width:580px) {
-    .main-nav {
-        flex-direction: column;
-    }
 
     .form {
         flex-direction: column;
@@ -113,21 +106,16 @@ body {
 
 .hint-text {
     padding: 1rem;
-    font-size: clamp(16px, 26px, 40px);
-    background: #121FCF;
-    background: linear-gradient(to right, #121FCF 0%, #CF1512 100%);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
-}
-
-.gradient-text {
-    text-align: center;
+    font-size: 22px;
     line-height: 1.5em;
-    min-width: 380px;
+    min-width: 250px;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+    animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 
 @media (max-width:750px) {
     .colors-container {

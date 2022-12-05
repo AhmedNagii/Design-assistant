@@ -8,7 +8,7 @@ import getClass from "../getClass";
 import "../css/searchImages.css";
 
 export default function SearchImages() {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState("Nothing");
   const [currentPage, setCurrentPage] = useState(1);
   const { isLoading, data } = useQuery(
     ["search", term, currentPage],
@@ -25,7 +25,7 @@ export default function SearchImages() {
         <img className="search-icon" src={searchIcon} alt="search icon" />
         <input
           className="search-input"
-          placeholder="Search for Icons..."
+          placeholder="Search free Images..."
           onChange={(e) => (searchQuery = e.target.value)}
         />
         <button
@@ -45,11 +45,8 @@ export default function SearchImages() {
             <h2 className="loader">🌀</h2>
           </div>
         ) : images.length == 0 ? (
-          <h1 className="gradient-text">
-            <span className="hint-text">
-              Please check your input or the internet connection
-            </span>
-            📡
+          <h1 className="hint-text">
+            Please check your input or the internet connection 📡
           </h1>
         ) : (
           images.map((img, index) => {
