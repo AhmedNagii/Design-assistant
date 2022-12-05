@@ -48,6 +48,12 @@
 }
 
 /* Side bar content */
+.scroll-container {
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .sidebar-container {
     background-color: #030303f3;

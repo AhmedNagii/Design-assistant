@@ -29,68 +29,69 @@ export default function Sidebar({ isOpen }) {
           Images
         </button>
       </div>
-
-      {toggleState ? (
-        <div className="saved-items-container">
-          {savedPalettes.map((item) => {
-            const { id, schemaDetails } = item;
-            return (
-              <div key={id} className="saved-palettes">
-                <div className="saved-palette__schema">
-                  {schemaDetails.map((color, index) => (
-                    <Color key={index} hex={color.hex.value} />
-                  ))}
+      <div className="scroll-container">
+        {toggleState ? (
+          <div className="saved-items-container">
+            {savedPalettes.map((item) => {
+              const { id, schemaDetails } = item;
+              return (
+                <div key={id} className="saved-palettes">
+                  <div className="saved-palette__schema">
+                    {schemaDetails.map((color, index) => (
+                      <Color key={index} hex={color.hex.value} />
+                    ))}
+                  </div>
+                  <button
+                    onClick={(e) => deletePalette(e)}
+                    className="delete-item__btn"
+                    id={id}
+                  >
+                    Delete
+                  </button>
+                  <Link
+                    to={`/paletteDetails/${item.id}`}
+                    target="_blank"
+                    className="open-item__btn"
+                  >
+                    Open
+                  </Link>
                 </div>
-                <button
-                  onClick={(e) => deletePalette(e)}
-                  className="delete-item__btn"
-                  id={id}
-                >
-                  Delete
-                </button>
-                <Link
-                  to={`/paletteDetails/${item.id}`}
-                  target="_blank"
-                  className="open-item__btn"
-                >
-                  Open
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="saved-items-container">
-          {savedImages.map((img) => {
-            const { id, links } = img;
-            return (
-              <div key={id} className="saved-image-item">
-                <img className="saved-image" src={links.image} alt="" />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="saved-items-container">
+            {savedImages.map((img) => {
+              const { id, links } = img;
+              return (
+                <div key={id} className="saved-image-item">
+                  <img className="saved-image" src={links.image} alt="" />
 
-                <button
-                  onClick={(e) => deleteImage(e)}
-                  className="delete-item__btn"
-                  id={id}
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={() =>
-                    window.open(
-                      img.links.download,
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
-                  className="open-item__btn"
-                >
-                  Open
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      )}
+                  <button
+                    onClick={(e) => deleteImage(e)}
+                    className="delete-item__btn"
+                    id={id}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() =>
+                      window.open(
+                        img.links.download,
+                        "_blank",
+                        "noopener,noreferrer"
+                      )
+                    }
+                    className="open-item__btn"
+                  >
+                    Open
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
