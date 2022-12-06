@@ -7,14 +7,14 @@ import Snackbar from "../components/Snackbar";
 import SavedPalettesContext from "../context/SavedPalettesContext";
 
 let currentInput = {
-  colorVal: "#ffffff",
+  colorVal: "#e66465",
   selectedMode: "",
 };
 
 export default function HomePage() {
   const { savePalette } = useContext(SavedPalettesContext);
   const [inputValues, setInputValues] = useState({
-    colorVal: "#ffffff",
+    colorVal: "#e66465",
     selectedMode: "",
   });
 
@@ -36,8 +36,8 @@ export default function HomePage() {
           <input
             className="color-input"
             type="color"
+            value={currentInput.colorVal}
             onChange={(e) => (currentInput.colorVal = e.target.value)}
-            value={inputValues.colorVal}
           />
           <button
             onClick={(e) => saveScheam(e)}
